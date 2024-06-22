@@ -1,0 +1,17 @@
+---
+
+- hosts: new_server
+  become: yes
+  pre_tasks:
+    - name: Install updates
+      apt:
+        update_cache: yes
+        upgrade: dist
+      when: ansible_os_family == 'Debian'
+
+- hosts: new_server
+  become: yes
+  roles:
+    - ansible_user
+    - ssh_keys
+    - volume_extend

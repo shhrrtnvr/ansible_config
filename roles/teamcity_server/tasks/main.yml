@@ -1,0 +1,35 @@
+- name: Install Docker Debian
+  apt:
+    name: docker.io
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: Install Docker RedHat
+  yum:
+    name: docker
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+- name: Start Docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Add user to docker group
+  user:
+    name: ansible
+    groups: docker
+    append: yes
+
+- name: Install TeamCity
+  docker_container:
+    name: teamcity
+    image: jetbrains/teamcity-server
+    state: started
+    ports:
+      - "8111:8111"
+    volumes:
+      - teamcity_data:/data/teamcity_server/datadir
+      - teamcity_logs:/opt/teamcity/logs
+    restart_policy: always

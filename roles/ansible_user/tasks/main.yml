@@ -1,0 +1,11 @@
+- name: create user for ansible
+  user:
+    name: ansible
+    group: root
+- name: add ansible user to sudoers
+  copy:
+    content: 'ansible ALL=(ALL) NOPASSWD: ALL'
+    dest: /etc/sudoers.d/ansible
+    owner: root
+    group: root
+    mode: 0440

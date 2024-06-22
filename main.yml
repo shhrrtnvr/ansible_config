@@ -1,0 +1,25 @@
+---
+
+- hosts: ci_server
+  tags: ci_server, teamcity_server
+  become: true
+  pre_tasks:
+    - name: Update repo cache
+      package:
+        update_cache: yes
+      changed_when: false
+  roles:
+    - ssh_keys
+    - teamcity_server
+
+- hosts: ci_agent
+  tags: ci_agent, teamcity_agent
+  become: true
+  pre_tasks:
+    - name: Update repo cache
+      package:
+        update_cache: yes
+      changed_when: false
+  roles:
+    - ssh_keys
+    - teamcity_agent

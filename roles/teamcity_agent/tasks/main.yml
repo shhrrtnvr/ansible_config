@@ -1,0 +1,38 @@
+- name: Install Docker Debian
+  apt:
+    name: docker.io
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: Install Docker RedHat
+  package:
+    name: docker
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+- name: Start Docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Add user to docker group
+  user:
+    name: ansible
+    groups: docker
+    append: yes
+
+- name: Install TeamCity Agent
+  docker_container:
+    name: teamcity_agent
+    image: jetbrains/teamcity-agent:2023.05.6-linux-sudo
+    state: started
+    privileged: true
+    volumes:
+      - teamcity_agent_conf:/data/teamcity_agent/conf
+      - docker_volume:/var/lib/docker
+    env:
+      SERVER_URL: "{{ TEAMCITY_SERVER }}"
+      DOCKER_IN_DOCKER: "start"
+    restart_policy: always
+

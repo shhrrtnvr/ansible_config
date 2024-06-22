@@ -1,0 +1,31 @@
+- name: Resize the physical volume
+  command: pvresize /dev/vda3
+  register: pvresize_output
+
+- name: Extend the logical volume to use all free space
+  command: lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
+  register: lvextend_output
+
+- name: Resize the filesystem
+  command: resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+  register: resize2fs_output
+
+- name: Check disk space
+  command: df -h
+  register: df_output
+
+- name: Display pvresize output
+  debug:
+    var: pvresize_output.stdout
+
+- name: Display lvextend output
+  debug:
+    var: lvextend_output.stdout
+
+- name: Display resize2fs output
+  debug:
+    var: resize2fs_output.stdout
+
+- name: Display disk space
+  debug:
+    var: df_output.stdout

@@ -1,0 +1,4 @@
+- name: add ssh key to authorized_keys
+  authorized_key:
+    user: ansible
+    key: "{{ lookup('file', '/home/shhrrtnvr/.ssh/ansible.pub') }}"
