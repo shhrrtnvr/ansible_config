@@ -10,6 +10,7 @@
       changed_when: false
   roles:
     - ssh_keys
+    - ngrok_tunnel
     - teamcity_server
 
 - hosts: ci_agent

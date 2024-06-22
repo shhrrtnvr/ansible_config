@@ -2,3 +2,4 @@
   authorized_key:
     user: ansible
     key: "{{ lookup('file', '/home/shhrrtnvr/.ssh/ansible.pub') }}"
+    

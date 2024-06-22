@@ -14,4 +14,9 @@
   roles:
     - ansible_user
     - ssh_keys
-    - volume_extend
+
+- hosts: ci_server
+  tags: ngrok
+  become: yes
+  roles:
+    - ngrok_install
