@@ -30,6 +30,7 @@
     state: started
     ports:
       - "8081:8081"
+      - "8082:8082"
     volumes:
       - nexus_repository_data:/nexus-data
     restart_policy: always
