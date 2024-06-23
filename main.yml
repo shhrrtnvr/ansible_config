@@ -24,3 +24,16 @@
   roles:
     - ssh_keys
     - teamcity_agent
+
+- hosts: artifact_server
+  tags: artifact_server
+  become: true
+  pre_tasks:
+    - name: Update repo cache
+      package:
+        update_cache: yes
+      changed_when: false
+  roles:
+    - ssh_keys
+    - ngrok_tunnel
+    - nexus_repository

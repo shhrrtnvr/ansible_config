@@ -1,0 +1,4 @@
+- name: Update repo cache
+  package:
+    update_cache: yes
+  changed_when: false

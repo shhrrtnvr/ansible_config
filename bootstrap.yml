@@ -15,7 +15,9 @@
     - ansible_user
     - ssh_keys
 
-- hosts: ci_server
+- hosts: 
+    - ci_server
+    - artifact_server
   tags: ngrok
   become: yes
   roles:

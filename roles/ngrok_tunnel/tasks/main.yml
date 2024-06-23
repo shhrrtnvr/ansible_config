@@ -1,8 +1,8 @@
 - name: ngrok_add_token
   tags: ngrok
-  command: /usr/local/bin/ngrok config add-authtoken {{ lookup('file', '/home/shhrrtnvr/.ngrok_token')}}
+  command: /usr/local/bin/ngrok config add-authtoken {{ lookup('file', TOKEN_LOCATION) }}
 
 # Run the ngrok command in the background and save process ID to a file
 - name: ngrok_tunnel
   tags: ngrok
-  shell: "/usr/local/bin/ngrok http --domain={{ DOMAIN }} 8111 > /dev/null & echo $! > /tmp/ngrok.pid"
+  shell: "/usr/local/bin/ngrok http --domain={{ DOMAIN }} {{ HTTP_PORT }} > /dev/null & echo $! > /tmp/ngrok.pid"

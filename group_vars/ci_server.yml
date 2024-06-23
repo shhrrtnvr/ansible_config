@@ -1,1 +1,3 @@
+TOKEN_LOCATION: '/home/shhrrtnvr/.ngrok_token'
 DOMAIN: ferret-flying-definitely.ngrok-free.app
+HTTP_PORT: 8111
