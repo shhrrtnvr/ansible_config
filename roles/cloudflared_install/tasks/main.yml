@@ -1,0 +1,16 @@
+- name: Download cloudflared package
+  ansible.builtin.get_url:
+    url: "{{ cloudflared_download_url }}"
+    dest: "{{ cloudflared_dest_path }}"
+
+- name: Install cloudflared package
+  ansible.builtin.apt:
+    deb: "{{ cloudflared_dest_path }}"
+    update_cache: yes
+
+- name: Install cloudflared service
+  ansible.builtin.shell: |
+    sudo cloudflared service install {{ CLOUDFLARE_TOKEN }}
+  args:
+    executable: /bin/bash
+  become: true

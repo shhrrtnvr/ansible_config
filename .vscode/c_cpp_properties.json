@@ -1,0 +1,17 @@
+{
+    "changed": true,
+    "cmd": "sudo cloudflared service install eyJhIjoiODJmNDNmNzBlMGU0ZmUwYzAwMTkyZjJjMGVhNjEyOGMiLCJ0IjoiMjZkZmFmNmQtYTQ5Yi00MGMxLWE0ZGUtN2M3YTcwOTQyNDRjIiwicyI6Ik9UVmpZekUxT1RjdFlqUmpZUzAwWmpnMUxXSmtZbVl0WXpnd09HSTJOV0ZtT0RJeiJ9\n",
+    "delta": "0:00:00.033925",
+    "end": "2024-06-23 17:11:04.286241",
+    "msg": "non-zero return code",
+    "rc": 1,
+    "start": "2024-06-23 17:11:04.252316",
+    "stderr": "2024-06-23T17:11:04Z INF Using Systemd\n2024-06-23T17:11:04Z ERR error generating service template error=\"cloudflared service is already installed at /etc/systemd/system/cloudflared-update.service; if you are running a cloudflared tunnel, you can point it to multiple origins, avoiding the need to run more than one cloudflared service in the same machine; otherwise if you are really sure, you can do `cloudflared service uninstall` to clean up the existing service and then try again this command\"\ncloudflared service is already installed at /etc/systemd/system/cloudflared-update.service; if you are running a cloudflared tunnel, you can point it to multiple origins, avoiding the need to run more than one cloudflared service in the same machine; otherwise if you are really sure, you can do `cloudflared service uninstall` to clean up the existing service and then try again this command",
+    "stderr_lines": [
+        "2024-06-23T17:11:04Z INF Using Systemd",
+        "2024-06-23T17:11:04Z ERR error generating service template error=\"cloudflared service is already installed at /etc/systemd/system/cloudflared-update.service; if you are running a cloudflared tunnel, you can point it to multiple origins, avoiding the need to run more than one cloudflared service in the same machine; otherwise if you are really sure, you can do `cloudflared service uninstall` to clean up the existing service and then try again this command\"",
+        "cloudflared service is already installed at /etc/systemd/system/cloudflared-update.service; if you are running a cloudflared tunnel, you can point it to multiple origins, avoiding the need to run more than one cloudflared service in the same machine; otherwise if you are really sure, you can do `cloudflared service uninstall` to clean up the existing service and then try again this command"
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}

@@ -1,3 +1,4 @@
 TOKEN_LOCATION: '/home/shhrrtnvr/.ngrok_token_s3m'
 DOMAIN: elf-closing-partly.ngrok-free.app
 HTTP_PORT: 8081
+CLOUDFLARE_TOKEN: "{{ lookup('file', playbook_dir + '/.secret/cloudflare_tokens.json') | from_json | json_query('nexus') }}"

@@ -17,8 +17,14 @@
 
 - hosts: 
     - ci_server
-    - artifact_server
-  tags: ngrok
+  tags: cloudflared, ci_server
   become: yes
   roles:
-    - ngrok_install
+    - cloudflared_install
+
+- hosts:
+    - artifact_server
+  tags: cloudflared, artifact_server
+  become: yes
+  roles:
+    - cloudflared_install

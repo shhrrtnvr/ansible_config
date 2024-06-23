@@ -1,3 +1,4 @@
 TOKEN_LOCATION: '/home/shhrrtnvr/.ngrok_token'
 DOMAIN: ferret-flying-definitely.ngrok-free.app
 HTTP_PORT: 8111
+CLOUDFLARE_TOKEN: "{{ lookup('file', playbook_dir + '/.secret/cloudflare_tokens.json') | from_json | json_query('teamcity') }}"
